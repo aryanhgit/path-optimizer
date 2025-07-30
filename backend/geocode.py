@@ -7,7 +7,7 @@ def get_coordinates(place_name, limit=5):
     params = {
         'q': place_name,
         'format': 'json',
-        'limit': 5
+        'limit': limit
     }
 
     headers = {
