@@ -49,7 +49,7 @@ class SignUp(Resource):
         return ({'message': f"User '{data['username']}' created successfully"}), 201 
 
 
-@auth_ns.route("/login", methods=["POST"])
+@auth_ns.route("/login")
 class Login(Resource):
     @auth_ns.expect(login_model)
     def post(self):
