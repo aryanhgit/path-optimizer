@@ -24,7 +24,7 @@ class PostsListResource(Resource):
     # Specifies the expected request payload schema for API documentation and validation purposes
     @post_ns.expect(posts_model)
     @post_ns.marshal_with(posts_model)
-    @jwt_required
+    @jwt_required()
     def post(self):
         """Create a new post"""
         data = post_ns.payload
@@ -43,7 +43,7 @@ class PostResource(Resource):
 
     @post_ns.expect(posts_model, validate=True)
     @post_ns.marshal_with(posts_model)
-    @jwt_required
+    @jwt_required()
     def put(self, id):
         """Update a post by id"""
         update_post = Posts.query.get_or_404(id)
@@ -52,7 +52,7 @@ class PostResource(Resource):
         return update_post
 
     @post_ns.response(200, 'Post deleted')
-    @jwt_required
+    @jwt_required()
     def delete(self, id):
         """Delete a post by id"""
         delete_post = Posts.query.get_or_404(id)
