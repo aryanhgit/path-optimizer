@@ -1,7 +1,8 @@
 import os
 import requests
 from flask_restx import Namespace, Resource, fields
-from openrouteservice import convert  # For decoding encoded polyline geometry
+from openrouteservice import convert
+from concurrent.futures import ThreadPoolExecutor
 
 ORS_API_KEY = os.getenv('ORS_API_KEY')
 ORS_URL_BASE = "https://api.openrouteservice.org/v2/directions/"
@@ -24,7 +25,7 @@ route_result_model = optimize_ns.model('RouteResult', {
     'carbon_emissions_kg': fields.Float,
     'fuel_cost_rs': fields.Float,
     'directions': fields.List(fields.String),
-    'route_geometry': fields.List(fields.List(fields.Float))  # [lat, lon]
+    'route_geometry': fields.List(fields.List(fields.Float))
 })
 
 optimize_response_model = optimize_ns.model('OptimizeResponse', {
@@ -49,6 +50,49 @@ MODE_LABELS = {
 
 FUEL_COST_PER_KM = 6.0 / 15  # ₹6 per litre, 15 km/l
 
+def fetch_ors_mode(mode, start_lon, start_lat, end_lon, end_lat):
+    url = f"{ORS_URL_BASE}{mode}"
+    headers = {
+        'Authorization': ORS_API_KEY,
+        'Content-Type': 'application/json'
+    }
+    body = {
+        "coordinates": [[start_lon, start_lat], [end_lon, end_lat]],
+        "instructions": True,
+        "preference": "fastest",
+        "geometry": True
+    }
+
+    try:
+        response = requests.post(url, json=body, headers=headers)
+        if response.status_code != 200:
+            return None
+        route = response.json()
+        route_data = route['routes'][0]
+        segment = route_data['segments'][0]
+
+        distance_km = round(segment['distance'] / 1000, 2)
+        duration_min = round(segment['duration'] / 60)
+        emissions = round(distance_km * EMISSIONS.get(mode, 0), 2)
+        fuel_cost = round(distance_km * FUEL_COST_PER_KM, 2) if mode == 'driving-car' else 0.0
+        directions = [step['instruction'] for step in segment.get('steps', [])]
+
+        decoded_geom = convert.decode_polyline(route_data['geometry'])
+        leaflet_coords = [[point[1], point[0]] for point in decoded_geom['coordinates']]
+
+        return {
+            "mode": MODE_LABELS[mode],
+            "distance_km": distance_km,
+            "duration_min": duration_min,
+            "carbon_emissions_kg": emissions,
+            "fuel_cost_rs": fuel_cost,
+            "directions": directions,
+            "route_geometry": leaflet_coords
+        }
+    except Exception as e:
+        print(f"Error in ORS mode {mode}: {e}")
+        return None
+
 @optimize_ns.route('/compare')
 class RouteComparison(Resource):
     @optimize_ns.expect(optimize_input_model)
@@ -65,9 +109,10 @@ class RouteComparison(Resource):
         except:
             optimize_ns.abort(400, "Invalid coordinate format. Use 'lon,lat'.")
 
-        modes = ['cycling-electric', 'cycling-regular', 'foot-walking']
         results = []
+        modes = ['cycling-electric', 'cycling-regular', 'foot-walking']
 
+        # TomTom (car mode)
         try:
             headers = {
                 "User-Agent": "Mozilla/5.0 (compatible; MyFlaskApp/1.0)"
@@ -85,15 +130,13 @@ class RouteComparison(Resource):
                 route = data['routes'][0]
                 summary = route['summary']
                 instructions = route['legs'][0]['points']
-                steps = route['guidance'].get('instructions')
-                directions = [step.get('message', '') + step.get('instructionType', '') for step in steps]
+                steps = route['guidance'].get('instructions', [])
+                directions = [step.get('message', '') for step in steps]
 
                 distance_km = round(summary['lengthInMeters'] / 1000, 2)
                 duration_min = round(summary['travelTimeInSeconds'] / 60)
                 emissions = round(distance_km * EMISSIONS['driving-car'], 2)
                 fuel_cost = round(distance_km * FUEL_COST_PER_KM, 2)
-                directions = [step['message'] for step in steps]
-
                 leaflet_coords = [[pt['latitude'], pt['longitude']] for pt in instructions]
 
                 results.append({
@@ -108,51 +151,16 @@ class RouteComparison(Resource):
         except Exception as e:
             print(f"TomTom error: {e}")
 
-        for mode in modes:
-            url = f"{ORS_URL_BASE}{mode}"
-            headers = {
-                'Authorization': ORS_API_KEY,
-                'Content-Type': 'application/json'
-            }
-            body = {
-                "coordinates": [[start_lon, start_lat], [end_lon, end_lat]],
-                "instructions": True,
-                "preference": "fastest",
-                "geometry": True  # Only this, no geometry_format
-            }
-
-            response = requests.post(url, json=body, headers=headers)
-
-            if response.status_code != 200:
-                continue
-
-            try:
-                route = response.json()
-                route_data = route['routes'][0]
-
-                segment = route_data['segments'][0]
-                distance_km = round(segment['distance'] / 1000, 2)
-                duration_min = round(segment['duration'] / 60)
-                emissions = round(distance_km * EMISSIONS.get(mode, 0), 2)
-                fuel_cost = round(distance_km * FUEL_COST_PER_KM, 2) if mode == 'driving-car' else 0.0
-                directions = [step['instruction'] for step in segment.get('steps', [])]
-
-                # Decode polyline into [lat, lon]
-                decoded_geom = convert.decode_polyline(route_data['geometry'])
-                leaflet_coords = [[point[1], point[0]] for point in decoded_geom['coordinates']]
-
-                results.append({
-                    "mode": MODE_LABELS[mode],
-                    "distance_km": distance_km,
-                    "duration_min": duration_min,
-                    "carbon_emissions_kg": emissions,
-                    "fuel_cost_rs": fuel_cost,
-                    "directions": directions,
-                    "route_geometry": leaflet_coords
-                })
-            except Exception as e:
-                print(f"Error parsing response for mode {mode}: {e}")
-                continue
+        # ORS (parallel calls)
+        with ThreadPoolExecutor(max_workers=len(modes)) as executor:
+            futures = [
+                executor.submit(fetch_ors_mode, mode, start_lon, start_lat, end_lon, end_lat)
+                for mode in modes
+            ]
+            for future in futures:
+                res = future.result()
+                if res:
+                    results.append(res)
 
         if not results:
             return {

@@ -9,6 +9,7 @@ import LoginPage from './components/Login';
 import CreatePostPage from './components/CreatePost';
 import ProtectedRoute from './ProtectedRoute';
 import Container from './Container';
+import RouteForm from './components/RouteForm';
 
 const App = () => {
     return (
@@ -20,7 +21,8 @@ const App = () => {
                         <Route path='/' element={<HomePage />} />
                         <Route path='/signup' element={<SignUpPage />} />
                         <Route path='/login' element={<LoginPage />} />
-                        <Route path='create_post' element={<ProtectedRoute><CreatePostPage /></ProtectedRoute>} />
+                        <Route path='/create_post' element={<ProtectedRoute><CreatePostPage /></ProtectedRoute>} />
+                        <Route path='/route' element={<ProtectedRoute><RouteForm /></ProtectedRoute>} />
                     </Routes> 
                 </Container>
             </div>

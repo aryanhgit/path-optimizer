@@ -34,17 +34,24 @@ const Navbar = () => {
                             </li>
                         </>
                     ) : (
-                        <li>
-                            <button
-                                onClick={() => {
-                                    logout();
-                                    setTimeout(() => navigate('/login'), 100);
-                                }}
-                                className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white font-semibold"
-                            >
-                                Log out
-                            </button>
-                        </li>
+                        <>
+                            <li>
+                                <Link to="/route" className="hover:text-green-300 text-white hover:bg-gray-600 px-2 py-3 rounded-xl font-medium">
+                                    Find routes
+                                </Link>
+                            </li>
+                            <li>
+                                <button
+                                    onClick={() => {
+                                        logout();
+                                        setTimeout(() => navigate('/login'), 100);
+                                    }}
+                                    className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white font-semibold"
+                                >
+                                    Log out
+                                </button>
+                            </li>
+                        </>
                     )}
                 </ul>
             </div>

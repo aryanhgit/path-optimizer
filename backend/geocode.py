@@ -13,7 +13,7 @@ def get_coordinates(place_name, limit=5):
     headers = {
         'User-Agent': 'BusRouteOptimizer/1.0'
     }
-
+    
     response = requests.get(url, params=params, headers=headers)
     if response.status_code == 200:
         data = response.json()
