@@ -1,16 +1,18 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const SignUpPage = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
 
     const [error, setError] = React.useState(null);
 
     const onSubmit = (data) => {
         console.log(data);
-        if (data.password !== data.confirmPassword) {
+        if (data.password_hash !== data.confirmPassword) {
             alert("Passwords do not match!");
+            setError("Passwords do not match");
             return;
         }
         // send the data to your backend API
@@ -21,13 +23,21 @@ const SignUpPage = () => {
             },
             body: JSON.stringify(data),
         })
-            .then(response => response.json())
+            .then(async response => {
+                const jsonResponse = await response.json();
+                console.log(jsonResponse);
+                if (response.status === 201)
+                    return jsonResponse;
+                throw new Error(jsonResponse.message);
+                })
             .then(data => {
                 console.log('Success:', data);
+                navigate('/login')
                 // Handle success, e.g., redirect to login page
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error(error);
+                setError(error.message);
                 // Handle errors, e.g., display an error message
             });
 
@@ -40,6 +50,7 @@ const SignUpPage = () => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
+                    {error && <p className="text-danger">{error}</p>}
                     <label htmlFor="username">Username</label>
                     <input type="text" className="form-control" id="username" placeholder="Enter username"
                         {...register("username", { required: true, minLength: 3 })}
@@ -59,7 +70,7 @@ const SignUpPage = () => {
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Password</label>
                     <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"
-                        {...register("password", { required: true, minLength: 6 })}
+                        {...register("password_hash", { required: true, minLength: 6 })}
                     />
                     {errors.password && <p className="text-danger">Password is required and must be at least 6 characters.</p>}
                 </div>

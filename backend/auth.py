@@ -1,5 +1,5 @@
 from flask_restx import Api, Resource, Namespace, fields
-from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token, jwt_required
+from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token, jwt_required, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import Posts, User
 from extension import db
@@ -32,11 +32,17 @@ class SignUp(Resource):
 
         # Check if user already exists by username or email
         existing_user = User.query.filter(
-            (User.username == data['username']) | (User.email == data['email'])
+            (User.username == data['username'])
+        ).first()
+
+        existing_email = User.query.filter(
+            (User.email == data['email'])
         ).first()
 
         if existing_user:
-            return ({'message': f"User '{data['username']}' already exists"}), 200
+            return ({'message': f"User with existing username already exists"}), 400
+        if existing_email:
+            return ({'message': f"User with existing email already exists"}), 400
 
         # Create new user with hashed password
         new_user = User(
@@ -64,7 +70,15 @@ class Login(Resource):
             access_token = create_access_token(identity=db_user.username)
             refresh_token = create_refresh_token(identity=db_user.username)
 
-            return ({"access_token": access_token, "refresh_token": refresh_token})
+            return ({"access_token": access_token, "refresh_token": refresh_token}), 200
 
         else:
-            return ({"message": "Invalid username or password"})
+            return ({"message": "Invalid username or password"}), 400
+        
+@auth_ns.route('/update-token')
+class UpdateToken(Resource):
+    @jwt_required(refresh=True)
+    def post(self):
+        current_user = get_jwt_identity()
+        new_access_token = create_access_token(identity=current_user)
+        return {"access_token": new_access_token}

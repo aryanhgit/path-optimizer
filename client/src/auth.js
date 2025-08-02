@@ -1,13 +1,13 @@
 import { createAuthProvider } from 'react-token-auth';
 
-// type Session = { accessToken: string; refreshToken: string };
-
-export const { useAuth, authFetch, login, logout } = createAuthProvider<Session>({
-    getAccessToken: session => session.accessToken,
+export const { useAuth, authFetch, login, logout } = createAuthProvider({
+    getAccessToken: session => session?.accessToken,
     storage: localStorage,
     onUpdateToken: token =>
-        fetch('/update-token', {
+        fetch('http://localhost:5000/auth/update-token', {
             method: 'POST',
-            body: token.refreshToken,
+            headers: {
+                Authorization: `Bearer ${token.refreshToken}`,
+            },
         }).then(r => r.json()),
 });

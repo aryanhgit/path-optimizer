@@ -10,6 +10,7 @@ from auth import auth_ns
 from flask_cors import CORS
 from places import place_ns
 from optimize import optimize_ns
+import os
 
 
 def create_app(config):
@@ -22,6 +23,7 @@ def create_app(config):
     db.init_app(app)
 
     migrate = Migrate(app, db)
+    app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
     jwt = JWTManager(app)
 
     # Set up Flask-RESTX API 
