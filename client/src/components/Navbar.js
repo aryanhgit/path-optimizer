@@ -4,38 +4,52 @@ import { logout, useAuth } from '../auth';
 const Navbar = () => {
     const navigate = useNavigate();
     const [logged] = useAuth();
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <Link className="navbar-brand" to="/">Posts</Link>
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <Link className="nav-link active" to="/">Home</Link>
+        <nav className="bg-dark text-white px-6 py-3 shadow-md rounded-lg h-30">
+            <div className="container mx-auto flex items-center justify-between">
+                {/* Logo or Brand */}
+                <Link to="/" className="text-xl font-bold hover:text-green-200 justify-center">
+                    RouteOptimizer
+                </Link>
+
+                {/* Navigation Links */}
+                <ul className="flex space-x-6 items-center rounded-xl">
+                    <li>
+                        <Link to="/" className="hover:text-green-300 text-white hover:bg-gray-600 rounded-xl py-3 px-2 font-medium">Home</Link>
                     </li>
-                    <li className="nav-item active">
-                        <Link className="nav-link active" to="/create_post">Create posts</Link>
+                    <li>
+                        <Link to="/create_post" className="hover:text-green-300 text-white hover:bg-gray-600 px-2 py-3 rounded-xl font-medium">Create Post</Link>
                     </li>
-                    {!logged && (<>
-                            <li className="nav-item">
-                                <Link className="nav-link active" to="/signup">Sign Up</Link >
+
+                    {!logged ? (
+                        <>
+                            <li>
+                                <Link to="/signup" className="hover:text-green-300 text-white hover:bg-gray-600 px-2 py-3 rounded-xl font-medium">Sign Up</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active" to="/login">Login</Link >
+                            <li>
+                                <Link to="/login" className="bg-red-600 text-green-700 rounded-xl text-white px-3 py-2 rounded font-semibold">
+                                    Login
+                                </Link>
                             </li>
                         </>
-                    )}
-                    {logged &&
-                        <li className="nav-item">
-                            <Link className="nav-link active" onClick={() => {
-                                logout();
-                                setTimeout(() => navigate('/login'), 100);
-                            }}>Log out</Link >
+                    ) : (
+                        <li>
+                            <button
+                                onClick={() => {
+                                    logout();
+                                    setTimeout(() => navigate('/login'), 100);
+                                }}
+                                className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white font-semibold"
+                            >
+                                Log out
+                            </button>
                         </li>
-                    }
+                    )}
                 </ul>
             </div>
         </nav>
     );
-}
+};
 
 export default Navbar;

@@ -1,19 +1,15 @@
-import { Navigate } from "react-router";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "./auth";
-import Loader from "./components/Loader";
 
 function ProtectedRoute({ children }) {
-    const [session, loading] = useAuth();
-    console.log("Session: ", session, "Loading: ", loading)
-    if (loading) {
-        return <Loader />;
-    }
+    const [loading, session] = useAuth();
 
-    if (!session) {
-        return <Navigate to="/login" replace />;
-    }
+    console.log("Session:", session);
+    console.log("Loading:", loading);
 
-    return children;
+    if (localStorage.getItem('REACT_TOKEN_AUTH_KEY'))
+        return children;
+    return <Navigate to="/login" replace />;
 }
 
 export default ProtectedRoute;

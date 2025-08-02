@@ -10,4 +10,5 @@ export const { useAuth, authFetch, login, logout } = createAuthProvider({
                 Authorization: `Bearer ${token.refreshToken}`,
             },
         }).then(r => r.json()),
+        defaultSession: "eji",
 });
