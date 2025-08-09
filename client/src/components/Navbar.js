@@ -19,7 +19,7 @@ const Navbar = () => {
                         <Link to="/" className="hover:text-green-300 text-white hover:bg-gray-600 rounded-xl py-3 px-2 font-medium">Home</Link>
                     </li>
                     <li>
-                        <Link to="/create_post" className="hover:text-green-300 text-white hover:bg-gray-600 px-2 py-3 rounded-xl font-medium">Create Post</Link>
+                        <Link to="/create_post" className="hover:text-green-300 text-white hover:bg-gray-600 px-2 py-3 rounded-xl font-medium">Campus Champions</Link>
                     </li>
 
                     {!logged ? (
