@@ -10,7 +10,7 @@ const Navbar = () => {
             <div className="container mx-auto flex items-center justify-between">
                 {/* Logo or Brand */}
                 <Link to="/" className="text-xl font-bold hover:text-green-200 justify-center">
-                    RouteOptimizer
+                    Route Optimizer
                 </Link>
 
                 {/* Navigation Links */}
@@ -28,7 +28,7 @@ const Navbar = () => {
                                 <Link to="/signup" className="hover:text-green-300 text-white hover:bg-gray-600 px-2 py-3 rounded-xl font-medium">Sign Up</Link>
                             </li>
                             <li>
-                                <Link to="/login" className="bg-red-600 text-green-700 rounded-xl text-white px-3 py-2 rounded font-semibold">
+                                <Link to="/login" className="bg-red-600 text-green-700 rounded-xl px-3 py-2 font-semibold">
                                     Login
                                 </Link>
                             </li>

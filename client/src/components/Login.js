@@ -11,7 +11,7 @@ const LoginPage = () => {
     const onSubmit = (data) => {
         console.log(data);
         // send the data to your backend API
-        fetch('http://localhost:5000/auth/login', {
+        fetch('/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
