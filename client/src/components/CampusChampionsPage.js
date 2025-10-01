@@ -34,13 +34,13 @@ const graphData = {
 };
 
 const weeklyLogData = [
-    { day: 'Monday', date: 'Sep 29', co2Saved: 2.1, mode: '🚲' },
-    { day: 'Sunday', date: 'Sep 28', co2Saved: 1.5, mode: '🚶‍♂️' },
+    { day: 'Monday', date: 'Sep 29', co2Saved: 2.1, mode: 'Electric Cycle' },
+    { day: 'Sunday', date: 'Sep 28', co2Saved: 1.5, mode: 'Walking' },
     { day: 'Saturday', date: 'Sep 27', co2Saved: 0, mode: 'Rest Day' },
-    { day: 'Friday', date: 'Sep 26', co2Saved: 3.2, mode: '🚲' },
-    { day: 'Thursday', date: 'Sep 25', co2Saved: 1.8, mode: '🚌' },
-    { day: 'Wednesday', date: 'Sep 24', co2Saved: 1.6, mode: '🚶‍♂️' },
-    { day: 'Tuesday', date: 'Sep 23', co2Saved: 2.5, mode: '🚲' },
+    { day: 'Friday', date: 'Sep 26', co2Saved: 3.2, mode: 'Electric Cycle' },
+    { day: 'Thursday', date: 'Sep 25', co2Saved: 1.8, mode: 'Bus' },
+    { day: 'Wednesday', date: 'Sep 24', co2Saved: 1.6, mode: 'Walking' },
+    { day: 'Tuesday', date: 'Sep 23', co2Saved: 2.5, mode: 'Electric Cycle' },
 ];
 
 // Data for the Eco-Champions leaderboard
@@ -237,15 +237,6 @@ const CampusChampionsPage = () => {
                 <section className="my-20">
                     <h2 className="text-4xl font-bold text-center text-slate-800 mb-4">🏆 Eco-Champions Leaderboard</h2>
                     <p className="text-center text-slate-500 mb-8">See how you stack up against other green commuters.</p>
-
-                    <div className="flex justify-center space-x-4 mb-8">
-                        <select className="border border-slate-300 rounded-lg p-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-teal-500 transition">
-                            <option>This Week</option><option>This Month</option><option>All Time</option>
-                        </select>
-                        <select className="border border-slate-300 rounded-lg p-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-teal-500 transition">
-                            <option>My University</option><option>All Universities</option>
-                        </select>
-                    </div>
 
                     <div className="bg-white p-6 rounded-2xl shadow-xl max-w-3xl mx-auto">
                         <ul className="space-y-2">
