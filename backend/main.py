@@ -12,7 +12,6 @@ from places import place_ns
 from optimize import optimize_ns
 import os
 
-
 def create_app(config):
     # Create Flask app and load config
     app = Flask(__name__)

@@ -74,7 +74,7 @@ class Login(Resource):
 
         else:
             return ({"message": "Invalid username or password"}), 400
-        
+
 @auth_ns.route('/update-token')
 class UpdateToken(Resource):
     @jwt_required(refresh=True)
