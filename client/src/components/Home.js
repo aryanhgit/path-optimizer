@@ -1,98 +1,106 @@
-import React from 'react';
-import { Link } from 'react-router';
+import { Link } from "react-router-dom";
+
+const PrimaryButton = ({ children, to }) => (
+    <Link 
+        to={to} 
+        className="inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-10 rounded-full text-xl shadow-lg hover:shadow-2xl hover:shadow-teal-500/50 transition duration-300 ease-in-out transform hover:scale-[1.02]"
+    >
+        {children}
+    </Link>
+);
+
+const SectionHeading = ({ children }) => (
+    <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-16">
+        {children}
+    </h2>
+);
+
+// --- HomePage Component ---
 
 const HomePage = () => {
     return (
-        <div className="page-container home-container p-10">
-            <section className="hero-section text-center my-10">
-                <h1 className="text-5xl font-bold text-green-700 mb-4">Your Smartest Route to Campus.</h1>
-                <p className="text-xl text-gray-700 mb-8">RouteOptimizer helps you find the fastest or most eco-friendly path for your college commute. Get to class on time while reducing your carbon footprint.</p>
-                <Link to="/route" className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 ease-in-out">Find Your Route Now</Link>
+        <div className="bg-slate-50 min-h-screen pt-24 pb-20"> {/* Added pt-24 for spacing below fixed navbar */}
+            
+            {/* Hero Section */}
+            <section className="text-center max-w-6xl mx-auto my-16 p-12 bg-white rounded-2xl shadow-2xl">
+                <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6">
+                    Your Smartest Route to <span className="text-teal-600">Campus.</span>
+                </h1>
+                <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+                    RouteOptimizer helps you find the fastest or most <span className="text-teal-600">eco-friendly path</span> for your college commute. Get to class on time while reducing your carbon footprint.
+                </p>
+                <PrimaryButton to="/route">
+                    Find Your Route Now ➔
+                </PrimaryButton>
             </section>
 
-            <section className="how-it-works-section my-20">
-                <h2 className="text-4xl font-bold text-center text-green-700 mb-12">Getting Your Best Route is Easy</h2>
-                <div className="flex flex-wrap justify-center gap-10">
-                    <div className="how-it-works-step text-center p-6 bg-white rounded-lg shadow-lg max-w-sm">
-                        <div className="text-5xl text-green-500 mb-4">📍</div>
-                        <h3 className="text-2xl font-semibold text-gray-800 mb-3">Step 1: Set Your Path</h3>
-                        <p className="text-gray-600">Enter your starting point and your campus destination. Use your current location for instant results.</p>
+            {/* How It Works Section */}
+            <section className="my-24 max-w-7xl mx-auto px-6">
+                <SectionHeading>
+                    Getting Your Best Route is Simple
+                </SectionHeading>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    {/* Step 1 Card */}
+                    <div className="text-center p-8 bg-white rounded-2xl shadow-xl border-t-4 border-teal-500 transition duration-500 hover:shadow-2xl hover:shadow-teal-200/50">
+                        <div className="text-6xl mb-6 text-teal-500">📍</div>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-3">1. Set Your Path</h3>
+                        <p className="text-gray-600">Enter your starting point and your campus destination. We utilize real-time data for instant results.</p>
                     </div>
-                    <div className="how-it-works-step text-center p-6 bg-white rounded-lg shadow-lg max-w-sm">
-                        <div className="text-5xl text-green-500 mb-4">⏱️/🌿</div>
-                        <h3 className="text-2xl font-semibold text-gray-800 mb-3">Step 2: Choose Your Priority</h3>
+                    {/* Step 2 Card */}
+                    <div className="text-center p-8 bg-white rounded-2xl shadow-xl border-t-4 border-teal-500 transition duration-500 hover:shadow-2xl hover:shadow-teal-200/50">
+                        <div className="text-6xl mb-6 text-teal-500">⚡/🍃</div>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-3">2. Choose Your Priority</h3>
                         <p className="text-gray-600">Select whether you want to optimize for the fastest travel time or the lowest carbon footprint.</p>
                     </div>
-                    <div className="how-it-works-step text-center p-6 bg-white rounded-lg shadow-lg max-w-sm">
-                        <div className="text-5xl text-green-500 mb-4">🗺️</div>
-                        <h3 className="text-2xl font-semibold text-gray-800 mb-3">Step 3: Compare & Go!</h3>
-                        <p className="text-gray-600">Instantly see a comparison of routes and travel modes. Pick the one that works for you and start your journey.</p>
+                    {/* Step 3 Card */}
+                    <div className="text-center p-8 bg-white rounded-2xl shadow-xl border-t-4 border-teal-500 transition duration-500 hover:shadow-2xl hover:shadow-teal-200/50">
+                        <div className="text-6xl mb-6 text-teal-500">📊</div>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-3">3. Compare & Go!</h3>
+                        <p className="text-gray-600">Instantly see a comparison of travel modes. Pick the best route and start your sustainable journey.</p>
                     </div>
                 </div>
             </section>
 
 
-            <section className="features-benefits-section my-20 bg-green-50 p-10 rounded-lg shadow-inner">
-                <h2 className="text-4xl font-bold text-center text-green-700 mb-12">Travel Smarter, Not Harder</h2>
+            {/* Features & Benefits Section */}
+            <section className="my-24 bg-teal-50 max-w-7xl mx-auto p-16 rounded-2xl shadow-inner border border-teal-100">
+                <SectionHeading>
+                    Travel Smarter, Not Harder
+                </SectionHeading>
                 <div className="grid md:grid-cols-3 gap-10">
-                    <div className="feature-card text-center p-6 bg-white rounded-lg shadow-lg">
-                        <div className="text-5xl text-green-600 mb-4">⏰</div>
+                    {/* Feature Card 1 */}
+                    <div className="text-center p-8 bg-white rounded-2xl shadow-xl">
+                        <div className="text-5xl mb-4 text-teal-600">⏰</div>
                         <h3 className="text-2xl font-semibold text-gray-800 mb-3">Never Be Late Again</h3>
-                        <p className="text-gray-600">Our time optimization finds the quickest combination of walking, biking, or public transport to get you to your lecture hall with minutes to spare. Perfect for those 8 AM classes!</p>
+                        <p className="text-gray-600">Our time optimization finds the quickest combination of walking, biking, or public transport to get you to your lecture hall with minutes to spare.</p>
                     </div>
-                    <div className="feature-card text-center p-6 bg-white rounded-lg shadow-lg">
-                        <div className="text-5xl text-green-600 mb-4">🌳</div>
+                    {/* Feature Card 2 */}
+                    <div className="text-center p-8 bg-white rounded-2xl shadow-xl">
+                        <div className="text-5xl mb-4 text-teal-600">🌳</div>
                         <h3 className="text-2xl font-semibold text-gray-800 mb-3">Go Green on Your Commute</h3>
-                        <p className="text-gray-600">Want to reduce your environmental impact? Choose the carbon-efficiency option to find the route with the lowest emissions. See your estimated CO₂ savings for every trip you take.</p>
+                        <p className="text-gray-600">Choose the carbon-efficiency option to find the route with the lowest emissions. See your estimated CO₂ savings for every trip you take.</p>
                     </div>
-                    <div className="feature-card text-center p-6 bg-white rounded-lg shadow-lg">
-                        <div className="text-5xl text-green-600 mb-4">📊</div>
-                        <h3 className="text-2xl font-semibold text-gray-800 mb-3">All Your Options in One Place</h3>
-                        <p className="text-gray-600">Stop juggling multiple map and transit apps. We compare walking, cycling, and public transport side-by-side, giving you a clear winner based on what matters most to you.</p>
+                    {/* Feature Card 3 */}
+                    <div className="text-center p-8 bg-white rounded-2xl shadow-xl">
+                        <div className="text-5xl mb-4 text-teal-600">🗺️</div>
+                        <h3 className="text-2xl font-semibold text-gray-800 mb-3">All Options in One Place</h3>
+                        <p className="text-gray-600">Stop juggling multiple map and transit apps. We compare every mode of transport side-by-side, giving you a clear winner.</p>
                     </div>
                 </div>
             </section>
 
-            <section className="cta-section text-center my-20 p-10 bg-green-600 text-white rounded-lg shadow-xl">
-                <h2 className="text-4xl font-bold mb-6 text-">Ready to Transform Your College Commute?</h2>
-                <p className="text-xl mb-8">Stop guessing and start optimizing. Find the perfect balance between speed and sustainability for your daily travel.</p>
-                <Link to="/route" className="bg-white text-green-700 hover:bg-green-100 font-bold py-4 px-8 rounded-full text-xl transition duration-300 ease-in-out shadow-lg">Plan My First Trip</Link>
+            {/* Final Call to Action Section */}
+            <section className="text-center my-24 max-w-7xl mx-auto p-16 bg-teal-600 text-white rounded-2xl shadow-2xl">
+                <h2 className="text-4xl md:text-5xl font-extrabold mb-6">Ready to Transform Your College Commute?</h2>
+                <p className="text-xl mb-10 opacity-90">Stop guessing and start optimizing. Find the perfect balance between speed and sustainability for your daily travel.</p>
+                <Link 
+                    to="/route" 
+                    className="inline-block bg-white hover:text-teal-700 text-teal-600 font-bold py-4 px-10 rounded-full text-xl shadow-lg hover:shadow-2xl hover:shadow-teal-500/50 transition duration-300 ease-in-out transform hover:scale-[1.02]"
+                >
+                    Plan My First Trip ➔
+                </Link>
             </section>
 
-            <footer className="footer bg-gray-800 text-white p-10 mt-20 rounded-lg shadow-xl">
-                <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 ">
-                    <div className="col-span-1">
-                        <h3 className="text-xl font-bold mb-4">Route Optimizer</h3>
-                        <p className="text-gray-400">Your smart solution for efficient and eco-friendly commutes.</p>
-                    </div>
-                    <div className="col-span-1">
-                        <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-                        <ul>
-                            <li className="mb-2"><Link to="/about" className="text-gray-400 hover:text-white">About Us</Link></li>
-                            <li className="mb-2"><Link to="/faq" className="text-gray-400 hover:text-white">FAQ</Link></li>
-                            <li className="mb-2"><Link to="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
-                        </ul>
-                    </div>
-                    <div className="col-span-1">
-                        <h3 className="text-xl font-bold mb-4">Legal</h3>
-                        <ul>
-                            <li className="mb-2"><Link to="/privacy" className="text-gray-400 hover:text-white">Privacy Policy</Link></li>
-                            <li className="mb-2"><Link to="/terms" className="text-gray-400 hover:text-white">Terms of Service</Link></li>
-                        </ul>
-                    </div>
-                    <div className="col-span-1">
-                        <h3 className="text-xl font-bold mb-4">Connect With Us</h3>
-                        <div className="flex space-x-4">
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
-                                <i className="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
-                                <i className="fab fa-twitter"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 }

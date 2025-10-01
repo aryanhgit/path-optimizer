@@ -37,65 +37,79 @@ const LoginPage = () => {
     }
 
     return (
-        <div className="mt-2 min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="w-full max-w-md p-10 bg-white rounded shadow-md">
-                <h1 className="text-2xl font-bold text-center text-green-700 mb-6">Login</h1>
+        <div className="min-h-screen bg-slate-100 flex flex-col justify-center items-center p-4 pt-24 pb-12">
+            <div className="max-w-md w-full mx-auto bg-white rounded-2xl shadow-2xl p-8 space-y-6">
+                <div className="text-center">
+                    <h1 className="text-3xl font-bold text-slate-800 mb-2">Welcome Back!</h1>
+                    <p className="text-slate-500">Please sign in to continue.</p>
+                </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    {error && <p className="text-red-600 text-sm">{error}</p>}
+                    {error && (
+                        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg" role="alert">
+                            <span className="block sm:inline">{error}</span>
+                        </div>
+                    )}
 
                     <div>
-                        <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
+                        <label htmlFor="username" className="block text-sm font-medium text-slate-700">Username</label>
                         <input
                             type="text"
                             id="username"
-                            className="mt-1 block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                            placeholder="Enter username"
-                            {...register("username", { required: true, minLength: 3 })}
+                            placeholder="Enter your username"
+                            className="mt-1 block w-full border border-slate-300 rounded-lg p-3 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+                            {...register("username", { required: "Username is required." })}
                         />
                         {errors.username && (
-                            <p className="text-red-500 text-sm mt-1">
-                                Username is required and must be at least 3 characters.
+                            <p className="text-red-500 text-xs mt-1">
+                                {errors.username.message}
                             </p>
                         )}
                     </div>
 
                     <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+                        <label htmlFor="password" className="block text-sm font-medium text-slate-700">Password</label>
                         <input
                             type="password"
                             id="password"
-                            className="mt-1 block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                            placeholder="Password"
-                            {...register("password", { required: true, minLength: 6 })}
+                            placeholder="••••••••"
+                            className="mt-1 block w-full border border-slate-300 rounded-lg p-3 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+                            {...register("password", { required: "Password is required." })}
                         />
                         {errors.password && (
-                            <p className="text-red-500 text-sm mt-1">
-                                Password is required and must be at least 6 characters.
+                            <p className="text-red-500 text-xs mt-1">
+                                {errors.password.message}
                             </p>
                         )}
                     </div>
 
-                    <div className="flex items-center">
-                        <input
-                            type="checkbox"
-                            id="exampleCheck1"
-                            className="mr-2"
-                            {...register("rememberMe")}
-                        />
-                        <label htmlFor="exampleCheck1" className="text-sm text-gray-700">Remember me</label>
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                            <input
+                                id="rememberMe"
+                                type="checkbox"
+                                className="h-4 w-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
+                                {...register("rememberMe")}
+                            />
+                            <label htmlFor="rememberMe" className="ml-2 block text-sm text-slate-900">
+                                Remember me
+                            </label>
+                        </div>
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition duration-200"
+                        className="w-full bg-teal-600 text-white font-semibold py-3 rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
                     >
-                        Submit
+                        Sign In
                     </button>
                 </form>
 
-                <p className="text-sm text-center mt-4">
-                    Don't have an account? <Link to="/signup" className="text-green-600 hover:underline">Sign Up</Link>
+                <p className="mt-6 text-center text-sm text-slate-600">
+                    Don't have an account?{' '}
+                    <Link to="/signup" className="font-medium text-teal-600 hover:underline">
+                        Sign Up
+                    </Link>
                 </p>
             </div>
         </div>

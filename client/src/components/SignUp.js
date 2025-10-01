@@ -44,96 +44,108 @@ const SignUpPage = () => {
     };
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-            <h1 className="text-2xl font-semibold mb-2 text-center">Sign Up</h1>
-            <p className="text-gray-600 mb-6 text-center">Welcome to the signup page!</p>
+        <div className="min-h-screen bg-slate-100 flex flex-col justify-center items-center p-4 pt-24 pb-12">
+            <div className="max-w-md w-full mx-auto bg-white rounded-2xl shadow-2xl p-8 space-y-6">
+                <div className="text-center">
+                    <h1 className="text-3xl font-bold text-slate-800 mb-2">Create Your Account</h1>
+                    <p className="text-slate-500">Join our community to get started! 🚀</p>
+                </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                {error && <p className="text-red-500">{error}</p>}
-
-                <div>
-                    <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
-                    <input
-                        type="text"
-                        id="username"
-                        placeholder="Enter username"
-                        className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                        {...register("username", { required: true, minLength: 3 })}
-                    />
-                    {errors.username && (
-                        <p className="text-red-500 text-sm mt-1">
-                            Username is required and must be at least 3 characters.
-                        </p>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    {error && (
+                        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg" role="alert">
+                            <span className="block sm:inline">{error}</span>
+                        </div>
                     )}
-                </div>
 
-                <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter email"
-                        className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                        {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-                    />
-                    <small className="text-gray-500">We'll never share your email with anyone else.</small>
-                    {errors.email && (
-                        <p className="text-red-500 text-sm mt-1">
-                            Email is required and must be valid.
-                        </p>
-                    )}
-                </div>
+                    <div>
+                        <label htmlFor="username" className="block text-sm font-medium text-slate-700">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="e.g., jane_doe"
+                            className="mt-1 block w-full border border-slate-300 rounded-lg p-3 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+                            {...register("username", { required: true, minLength: 3 })}
+                        />
+                        {errors.username && (
+                            <p className="text-red-500 text-xs mt-1">
+                                Username is required (min. 3 characters).
+                            </p>
+                        )}
+                    </div>
 
-                <div>
-                    <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Password"
-                        className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                        {...register("password_hash", { required: true, minLength: 6 })}
-                    />
-                    {errors.password_hash && (
-                        <p className="text-red-500 text-sm mt-1">
-                            Password is required and must be at least 6 characters.
-                        </p>
-                    )}
-                </div>
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-slate-700">Email address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            className="mt-1 block w-full border border-slate-300 rounded-lg p-3 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+                            {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+                        />
+                        {errors.email && (
+                            <p className="text-red-500 text-xs mt-1">
+                                A valid email address is required.
+                            </p>
+                        )}
+                    </div>
 
-                <div>
-                    <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm Password</label>
-                    <input
-                        type="password"
-                        id="confirmPassword"
-                        placeholder="Confirm Password"
-                        className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                        {...register("confirmPassword", { required: true, minLength: 6 })}
-                    />
-                    {errors.confirmPassword && (
-                        <p className="text-red-500 text-sm mt-1">
-                            Confirm Password is required and must be at least 6 characters.
-                        </p>
-                    )}
-                </div>
+                    <div>
+                        <label htmlFor="password" className="block text-sm font-medium text-slate-700">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="••••••••"
+                            className="mt-1 block w-full border border-slate-300 rounded-lg p-3 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+                            {...register("password_hash", { required: true, minLength: 6 })}
+                        />
+                        {errors.password_hash && (
+                            <p className="text-red-500 text-xs mt-1">
+                                Password is required (min. 6 characters).
+                            </p>
+                        )}
+                    </div>
 
-                <div className="flex items-center">
-                    <input
-                        type="checkbox"
-                        id="exampleCheck1"
-                        className="mr-2"
-                        {...register("rememberMe")}
-                    />
-                    <label htmlFor="exampleCheck1" className="text-sm text-gray-700">Check me out</label>
-                </div>
+                    <div>
+                        <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700">Confirm Password</label>
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="••••••••"
+                            className="mt-1 block w-full border border-slate-300 rounded-lg p-3 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
+                            {...register("confirmPassword", { required: true, minLength: 6 })}
+                        />
+                        {errors.confirmPassword && (
+                            <p className="text-red-500 text-xs mt-1">
+                                Please confirm your password.
+                            </p>
+                        )}
+                    </div>
 
-                <button type="submit" className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition">
-                    Submit
-                </button>
-            </form>
+                    <div className="flex items-center">
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                            className="h-4 w-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
+                            {...register("rememberMe")}
+                        />
+                        <label htmlFor="rememberMe" className="ml-2 block text-sm text-slate-900">
+                            I agree to the <a href="legal#terms" className="font-medium text-teal-600 hover:text-teal-500">Terms</a> and <a href="legal#privacy" className="font-medium text-teal-600 hover:text-teal-500">Privacy Policy</a>
+                        </label>
+                    </div>
 
-            <p className="mt-4 text-center text-sm text-gray-600">
-                Already have an account? <Link to="/login" className="text-green-600 hover:underline">Login</Link>
-            </p>
+                    <button type="submit" className="w-full bg-teal-600 text-white font-semibold py-3 rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5">
+                        Create Account
+                    </button>
+                </form>
+
+                <p className="mt-6 text-center text-sm text-slate-600">
+                    Already have an account?{' '}
+                    <Link to="/login" className="font-medium text-teal-600 hover:underline">
+                        Sign In
+                    </Link>
+                </p>
+            </div>
         </div>
     );
 
