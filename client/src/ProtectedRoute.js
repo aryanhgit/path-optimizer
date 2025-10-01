@@ -4,11 +4,10 @@ import { useAuth } from "./auth";
 function ProtectedRoute({ children }) {
     const [loading, session] = useAuth();
 
-    console.log("Session:", session);
-    console.log("Loading:", loading);
-
     if (localStorage.getItem('REACT_TOKEN_AUTH_KEY'))
         return children;
+    console.log("Session:", session);
+    console.log("Loading:", loading);
     return <Navigate to="/login" replace />;
 }
 

@@ -4,7 +4,7 @@ export const { useAuth, authFetch, login, logout } = createAuthProvider({
     getAccessToken: session => session?.accessToken,
     storage: localStorage,
     onUpdateToken: token =>
-        fetch('http://localhost:5000/auth/update-token', {
+        fetch('/auth/update-token', {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${token.refreshToken}`,
