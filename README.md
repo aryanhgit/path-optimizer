@@ -307,12 +307,45 @@ Once the application is running, navigate to it in your browser.
 **Map View**
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/16214d89-0572-4629-837d-bfe08d8e1bf4" />
 
-**Sample Statistics**
+## Sustainability Dashboard  
+
+Path Optimizer goes beyond route optimization by helping users **track and improve their environmental impact**. The platform includes a **personalized dashboard** and community-driven features to make sustainable commuting engaging and rewarding.  
+
+### **Your Green Footprint**  
+A personal analytics hub where users can monitor their impact:  
+- **Total CO₂ Saved** – The cumulative emissions reduced by choosing greener travel modes.  
+- **Best Streak** – Longest consecutive days of eco-friendly commuting.  
+- **Weekly Activity Log** – Detailed breakdown of each trip’s CO₂ savings.  
+- **Visual Progress Charts** – See travel modes used and track CO₂ savings over the last 30 days.
 <img width="1920" height="1080" alt="Screenshot (489)" src="https://github.com/user-attachments/assets/a9a616ee-60d1-444a-95e0-25aa4b280fa7" />
+
+### **Campus Champions**  
+Encourages a **collective effort** by displaying campus-wide statistics:  
+- Total CO₂ saved by all users  
+- Total number of green trips taken  
 <img width="1920" height="1080" alt="Screenshot (490)" src="https://github.com/user-attachments/assets/e69351c0-61f1-41f7-bc3c-488fdd84fb41" />
+
+### **Eco-Champions Leaderboard**  
+Gamifies sustainable travel to **motivate friendly competition**:  
+- Ranks users based on their CO₂ savings  
+- Rewards consistent eco-friendly behavior with recognition and leaderboard visibility  
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d1de7b7b-8e88-4470-9984-76ec7f883e40" />
 
-````markdown
+By combining **personal analytics**, **community goals**, and **friendly competition**, Path Optimizer makes sustainable commuting:  
+- **Engaging** – Users see the impact of their choices.  
+- **Measurable** – CO₂ savings are tracked and visualized.  
+- **Rewarding** – Leaderboards and streaks motivate consistent green behavior.  
+
+---
+
+### Example Dashboard Visuals  
+
+- Personalized CO₂ footprint and streak tracking  
+- Weekly activity logs and travel mode breakdowns  
+- Campus-wide leaderboard and eco-champions rankings  
+
+This functionality encourages students to **choose greener commute options more frequently**, transforming sustainability into a **fun, competitive, and tangible experience**.  
+
 ## Contributing  
 
 This is an open-source project, and contributions are highly encouraged!  
@@ -322,8 +355,7 @@ If you'd like to improve Path Optimizer, follow these steps:
 2. **Create a branch** for your feature or bug fix  
    ```bash
    git checkout -b feature/your-feature-name
-````
-
+   ```
 3. **Commit your changes** with clear messages
 4. **Push** your branch to your fork
 5. **Open a Pull Request** describing your contribution
@@ -335,16 +367,11 @@ We recommend checking out issues tagged with **`good first issue`** for beginner
 ## Support
 
 If you encounter any issues, bugs, or have feature requests:
-Please open an issue here: [GitHub Issues](https://github.com/aryanhgit/path-optimizer.git/issues)
+Please open an issue here: [GitHub Issues](https://github.com/aryanhgit/path-optimizer/issues)
 
 ---
 
-## Authors and Acknowledgments
-
-This project is proudly developed and maintained by:
-
-* [Aryan Raj](https://github.com/aryanhgit/)
-* [Aryan Shrivastava](https://github.com/aryanshrivastav25)
+## Acknowledgments
 
 Special thanks to the **open-source community** and the teams behind:
 
