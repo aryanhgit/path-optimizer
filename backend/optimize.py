@@ -54,7 +54,7 @@ MODE_LABELS = {
 # Fuel Price: ₹100/L
 # Calculation: 100 km / 15 km/L \* ₹100/L = ₹666.67 (total fuel cost).
 # Cost per KM: ₹666.67 / 100 km = ₹6.67 per km.
-FUEL_COST_PER_KM = 16.67
+FUEL_COST_PER_KM = 6.67
 
 def fetch_ors_mode(mode, start_lon, start_lat, end_lon, end_lat):
     url = f"{ORS_URL_BASE}{mode}"
