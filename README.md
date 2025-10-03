@@ -1,21 +1,12 @@
 # Path Optimizer  
-## 🛠 Tech Stack  
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)  
-![Flask](https://img.shields.io/badge/Flask-2.0%2B-lightgrey?logo=flask&logoColor=black)  
-![React](https://img.shields.io/badge/React-18%2B-blue?logo=react&logoColor=white)  
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript&logoColor=black)  
-![OpenStreetMap](https://img.shields.io/badge/OpenStreetMap-API-green?logo=openstreetmap&logoColor=white)  
-![TomTom](https://img.shields.io/badge/TomTom-API-red?logo=tomtom&logoColor=white)  
-![OpenRouteService](https://img.shields.io/badge/OpenRouteService-API-blueviolet)  
-![OpenTripPlanner](https://img.shields.io/badge/OpenTripPlanner-API-lightblue)  
-![Leaflet.js](https://img.shields.io/badge/Leaflet.js-mapping-brightgreen)  
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-2.0%2B-lightgrey?logo=flask&logoColor=black) ![React](https://img.shields.io/badge/React-18%2B-blue?logo=react&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript&logoColor=black) ![OpenStreetMap](https://img.shields.io/badge/OpenStreetMap-API-green?logo=openstreetmap&logoColor=white) ![TomTom](https://img.shields.io/badge/TomTom-API-red?logo=tomtom&logoColor=white) ![OpenRouteService](https://img.shields.io/badge/OpenRouteService-API-blueviolet) ![OpenTripPlanner](https://img.shields.io/badge/OpenTripPlanner-API-lightblue) ![Leaflet.js](https://img.shields.io/badge/Leaflet.js-mapping-brightgreen)  
 
 **Making Sustainable Commutes Simple, Fast, and Affordable for Every Student.**
 
 ---
 
-## 🌟 Introduction  
+## Introduction  
 
 Every day, millions of college students face the same problem: getting from home to campus efficiently, affordably, and sustainably. The lack of intelligent, student-centric commute tools means that most end up choosing either costly private vehicles or struggling with public transportation systems that feel confusing and unreliable. This daily grind translates into wasted study hours, drained wallets, and higher-than-necessary environmental impact.  
 
@@ -36,7 +27,7 @@ We believe commuting should never be a barrier to education, nor should it come 
 
 ---
 
-## 🚀 The Challenge: The Student Commute Grind  
+## The Challenge: The Student Commute Grind  
 For thousands of college students, the daily commute is a significant source of stress and inefficiency.  
 - **No intelligent transit tools** → reliance on costly private vehicles or confusing bus routes  
 - **Lost time & money** → wasted study hours and tight student budgets strained further  
@@ -44,28 +35,28 @@ For thousands of college students, the daily commute is a significant source of 
 
 ---
 
-## 💡 Our Solution: Smart, Sustainable Travel  
+## Our Solution: Smart, Sustainable Travel  
 **Path Optimizer** is a web application designed to empower student commuters with real-time, intelligent route decisions.  
 
 ### Key Features  
-- **⚡ Instant Route Comparison**  
+- **Instant Route Comparison**  
   Students input start and end points to get optimized routes based on speed or affordability.  
 
-- **🚲 Multi-Modal Analysis**  
+- **Multi-Modal Analysis**  
   Compare public transport with driving, cycling, or walking in one unified interface.  
 
-- **📊 Data-Driven Decisions**  
+- **Data-Driven Decisions**  
   Metrics like travel time, fuel cost, and estimated CO₂ emissions provided for every option.  
 
 ---
 
-## 🌍 The Green Impact: Measurable and Meaningful  
+## The Green Impact: Measurable and Meaningful  
 Optimizing routes encourages a shift away from cars, directly reducing emissions.  
 
 - **Per Student Impact:** Switching from a car to a bus can save **~1.5–2 kg CO₂ per week**  
 - **Campus Impact:** A culture of sustainability built through smarter commuting choices  
 
-### 🔢 Standardized Metrics  
+### Standardized Metrics  
 
 | Metric                  | Value      | Assumption / Source |
 |--------------------------|-----------:|----------------------|
@@ -73,24 +64,24 @@ Optimizing routes encourages a shift away from cars, directly reducing emissions
 | CO₂ Emissions (E-Bike)  | 14 g/km    | Life-cycle emissions |
 | CO₂ Emissions (Cycle)   | 16 g/km    | Life-cycle emissions |
 | CO₂ Emissions (Walk)    | 5 g/km     | Life-cycle emissions |
-| Fuel Cost (Car)         | ₹6.67/km   | ₹100/L fuel & 15 km/L mileage (Oct 2023) |
+| Fuel Cost (Car)         | ₹6.67/km   | ₹100/L fuel & 15 km/L mileage (Oct 2025) |
 
 ---
 
-## 🌱 Vision for Growth: Smarter Campuses & Cities  
+## Vision for Growth: Smarter Campuses & Cities  
 
-- **🏙 City-Wide Expansion**  
-  Ready for deployment in cities with GTFS (General Transit Feed Specification) data (e.g., Ahmedabad, Kochi).  
+- **City-Wide Expansion**  
+  Ready for deployment in cities with GTFS (General Transit Feed Specification) data (e.g., Delhi, Mumbai).  
 
-- **🏫 Institutional Integration**  
+- **Institutional Integration**  
   Universities can integrate with shuttle services, cutting costs and improving student experience.  
 
-- **🌐 Smart City Applications**  
+- **Smart City Applications**  
   Can power dashboards for campuses, CSR initiatives, and municipal mobility planning.  
 
 ---
 
-## 📌 Summary  
+## Summary  
 Path Optimizer is more than just a commute planner. It’s a sustainability-focused mobility platform built to:  
 - Save **time & money** for students  
 - Reduce **carbon emissions**  
@@ -98,11 +89,11 @@ Path Optimizer is more than just a commute planner. It’s a sustainability-focu
 
 ---
 
-## 🏗 Technical Foundation  
+## Technical Foundation  
 
-Our solution is built on a **robust, scalable, and open-source technology stack**, designed for reliability and easy deployment. Every component is containerized with **Docker** to ensure consistent performance across environments.  
+Our solution is built on a **robust, scalable, and open-source technology stack**, designed for reliability and easy deployment. We are planning every component to be containerized with **Docker** to ensure consistent performance across environments.  
 
-### 📦 Technology Stack  
+### Technology Stack  
 
 | Component       | Technology / Service |
 |-----------------|-----------------------|
@@ -115,26 +106,26 @@ Our solution is built on a **robust, scalable, and open-source technology stack*
 
 ---
 
-## ⚙️ How It Works  
+## How It Works  
 
 Path Optimizer employs a **multi-API strategy** to deliver the most accurate and relevant route data for each transport mode. The system processes every user request through a well-defined data pipeline:
 
-1. **📍 Geocoding**  
+1. **Geocoding**  
    - User enters a place name (e.g., *“Main Library”*).  
    - **Geocode module** queries **OpenStreetMap Nominatim** → returns latitude & longitude.  
 
-2. **🔀 Parallel Route Fetching**  
+2. **Parallel Route Fetching**  
    - **Optimize service** sends concurrent API calls:  
      - **TomTom API** → Driving routes  
      - **OpenRouteService (ORS) API** → Walking & Cycling routes  
      - **OpenTripPlanner (OTP) API** → Public Transit (via GTFS data)  
 
-3. **📊 Data Aggregation & Comparison**  
+3. **Data Aggregation & Comparison**  
    - Backend consolidates results  
    - Adds key metrics: travel time, cost, CO₂ emissions  
    - Returns a **single, sorted JSON response**  
 
-4. **🖥 Unified Display**  
+4. **Unified Display**  
    - **React + Leaflet.js frontend** visualizes routes on an interactive map  
    - Students compare options (fastest vs. cheapest) instantly  
 
@@ -143,29 +134,47 @@ Path Optimizer employs a **multi-API strategy** to deliver the most accurate and
 ## 🔗 System Architecture Diagram  
 
 ```mermaid
-flowchart TD
-    A[👩‍🎓 Student Input<br>(Origin & Destination)] --> B[📍 Geocode Module<br>OpenStreetMap Nominatim]
-    B --> C[🔀 Optimize Service<br>(Flask Backend)]
+graph TD
+    subgraph "1. Geocoding"
+        A[User enters place name] --> B(Frontend: React + Leaflet.js);
+        B -->|Sends place name| C{Geocode Module};
+        C -->|Queries for coordinates| D[(OpenStreetMap Nominatim)];
+        D -->|Returns Lat/Lon| C;
+    end
 
-    C --> D1[🚗 TomTom API<br>(Driving Routes)]
-    C --> D2[🚲 ORS API<br>(Walking & Cycling Routes)]
-    C --> D3[🚌 OTP API<br>(Transit via GTFS)]
+    subgraph "2. Parallel Route Fetching"
+        C -->|Sends Lat/Lon| E{Optimize Service};
+        E -->|Fetches Driving Route| F[(TomTom API)];
+        E -->|Fetches Walking & Cycling| G[(OpenRouteService API)];
+        E -->|Fetches Public Transit| H[(OpenTripPlanner API)];
+    end
 
-    D1 --> E[📊 Data Aggregation & Metrics]
-    D2 --> E
-    D3 --> E
+    subgraph "3. Data Aggregation & Comparison"
+        F -->|Driving Data| I{Backend};
+        G -->|Walking/Cycling Data| I;
+        H -->|Transit Data| I;
+        I -- consolidates results & adds metrics --> J[Single, Sorted JSON Response];
+    end
 
-    E --> F[🖥 JSON Response<br>with Time, Cost, CO₂]
-    F --> G[🌍 React + Leaflet.js<br>Frontend Display]
+    subgraph "4. Unified Display"
+        J -->|Returns JSON to frontend| B;
+        B -->|Visualizes all routes on map| K[User compares options];
+    end
+
+    %% Styling
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#bbf,stroke:#333,stroke-width:2px
+    style E fill:#bbf,stroke:#333,stroke-width:2px
+    style I fill:#bbf,stroke:#333,stroke-width:2px
 ```
 ---
 
 This modular, API-driven architecture ensures that Path Optimizer is not only **scalable across campuses and cities**, but also **adaptable** as new transport data sources and routing technologies emerge.  
-## ⚙️ Installation  
+## Installation  
 
 To get the project running locally, please follow these steps.  
 
-### ✅ Prerequisites  
+### Prerequisites  
 - **Python 3.8+**  
 - **Node.js v16+**  
 - **An active internet connection** (for external API access)  
@@ -176,11 +185,11 @@ To get the project running locally, please follow these steps.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/[your-username]/[your-repository-name].git
+git clone https://github.com/aryanhgit/path-optimizer.git
 cd path-optimizer
 
-# 2. Set up the backend (in the /server directory)
-cd server
+# 2. Set up the backend (in the /backend directory)
+cd backend
 
 # Create and activate a Python virtual environment
 python3 -m venv .venv
@@ -206,9 +215,9 @@ npm start
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
-To access routing and geocoding services, you’ll need API keys.
+To access routing and geocoding services, you’ll need API keys, if the API keys are expired.
 
 1. **TomTom API** (for driving routes)
 
@@ -249,7 +258,7 @@ Make sure to restart your backend after updating `.env` or `config.py`.
 
 ---
 
-## 🚀 Usage
+## Usage
 
 Once the application is running, navigate to it in your browser.
 
@@ -281,12 +290,13 @@ Once the application is running, navigate to it in your browser.
 
 ---
 
-## 📊 Example Output
+## Example Output
 
-![Comparison Table](https://example.com/comparison-table.png)
+**Comparison Table**
+<img src="./assets/screenshot.png" width="400" alt="My resized screenshot">
 
 ````markdown
-## 🤝 Contributing  
+## Contributing  
 
 This is an open-source project, and contributions are highly encouraged!  
 If you'd like to improve Path Optimizer, follow these steps:  
@@ -301,25 +311,23 @@ If you'd like to improve Path Optimizer, follow these steps:
 4. **Push** your branch to your fork
 5. **Open a Pull Request** describing your contribution
 
-💡 We recommend checking out issues tagged with **`good first issue`** for beginner-friendly contributions.
-
-For more details, see our [CONTRIBUTING.md](CONTRIBUTING.md) file.
+We recommend checking out issues tagged with **`good first issue`** for beginner-friendly contributions.
 
 ---
 
-## 🛠 Support
+## Support
 
 If you encounter any issues, bugs, or have feature requests:
-👉 Please open an issue here: [GitHub Issues](https://github.com/[your-username]/[your-repository-name]/issues)
+Please open an issue here: [GitHub Issues](https://github.com/aryanhgit/path-optimizer.git/issues)
 
 ---
 
-## 👥 Authors and Acknowledgments
+## Authors and Acknowledgments
 
 This project is proudly developed and maintained by:
 
-* [Author 1 Name](https://github.com/author1)
-* [Author 2 Name](https://github.com/author2)
+* [Aryan Raj](https://github.com/aryanhgit/)
+* [Aryan Shrivastava](https://github.com/aryanshrivastav25)
 
 Special thanks to the **open-source community** and the teams behind:
 
@@ -329,8 +337,3 @@ Special thanks to the **open-source community** and the teams behind:
 * **GTFS** for making transit data accessible
 
 ---
-
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
-See the LICENSE file for full details.
