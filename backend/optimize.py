@@ -34,11 +34,12 @@ optimize_response_model = optimize_ns.model('OptimizeResponse', {
     'alternatives': fields.List(fields.Nested(route_result_model))
 })
 
+# gm / km 
 EMISSIONS = {
-    'driving-car': 0.21,
-    'cycling-electric': 0.02,
-    'cycling-regular': 0.0,
-    'foot-walking': 0.0
+    'driving-car': 121.9,
+    'cycling-electric': 14,
+    'cycling-regular': 16, #estimating the life-cycle emission
+    'foot-walking': 5
 }
 
 MODE_LABELS = {
@@ -48,7 +49,12 @@ MODE_LABELS = {
     'foot-walking': 'Walk'
 }
 
-FUEL_COST_PER_KM = 6.0 / 15  # ₹6 per litre, 15 km/l
+# Distance: 100 km
+# Mileage: 15 km/L
+# Fuel Price: ₹100/L
+# Calculation: 100 km / 15 km/L \* ₹100/L = ₹666.67 (total fuel cost).
+# Cost per KM: ₹666.67 / 100 km = ₹6.67 per km.
+FUEL_COST_PER_KM = 16.67
 
 def fetch_ors_mode(mode, start_lon, start_lat, end_lon, end_lat):
     url = f"{ORS_URL_BASE}{mode}"
