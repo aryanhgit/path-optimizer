@@ -267,6 +267,12 @@ Once the application is running, navigate to it in your browser.
    * Username: `harry`
    * Password: `123harry`
 
+**Sign Up Page**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/34d22c13-1b2a-4060-af74-82b352ebb05d" />
+
+**Sign In Page**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cc32ed83-5862-4248-9ca1-4aa5c943b5cb" />
+
 2. Click on **"Find Route"** in the navigation bar.
 
 3. In the form, enter your **starting location** and **destination**.
@@ -292,8 +298,19 @@ Once the application is running, navigate to it in your browser.
 
 ## Example Output
 
+**Route Page**
+<img width="1920" height="1080" alt="Screenshot (486)" src="https://github.com/user-attachments/assets/d7d50334-6f21-4796-99e1-fd804220ce59" />
+
 **Comparison Table**
-<img src="./assets/screenshot.png" width="400" alt="My resized screenshot">
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/264558ef-d873-46a0-b94d-fdb7dcaf81f6" />
+
+**Map View**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/16214d89-0572-4629-837d-bfe08d8e1bf4" />
+
+**Sample Statistics**
+<img width="1920" height="1080" alt="Screenshot (489)" src="https://github.com/user-attachments/assets/a9a616ee-60d1-444a-95e0-25aa4b280fa7" />
+<img width="1920" height="1080" alt="Screenshot (490)" src="https://github.com/user-attachments/assets/e69351c0-61f1-41f7-bc3c-488fdd84fb41" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d1de7b7b-8e88-4470-9984-76ec7f883e40" />
 
 ````markdown
 ## Contributing  
